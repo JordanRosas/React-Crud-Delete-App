@@ -1,15 +1,25 @@
 import React, { Component } from 'react'
+import images from './images.jpg'
+import './Employees.css'
 
 
-class EmployeeList extends Component {
-    render() {
+export default class AnimalList extends Component {
+    render () {
         return (
             <section className="employees">
-            <h1>Employees</h1>
             {
                 this.props.employees.map(employee =>
-                    <div key={employee.id}>
-                        {employee.name}
+                    <div key={employee.id} className="card">
+                        <div className="card-body">
+                            <h5 className="card-title">
+                                <img src={images} className="icon--employee" alt="working" />
+                                {employee.name}
+                                <a
+                                    href="#"
+                                    onClick={() => this.props.deleteEmployee(employee.id)}
+                                    className="card-link">Delete</a>
+                            </h5>
+                        </div>
                     </div>
                 )
             }
@@ -17,7 +27,5 @@ class EmployeeList extends Component {
         )
     }
 }
-
-export default EmployeeList
 
 // properties are being read from the parent component being kennel.js 
